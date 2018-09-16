@@ -25,6 +25,10 @@ let _testMode = false;
 let _alwaysSendToDefaultTracker = true;
 
 const internalGa = (...args) => {
+    if (typeof window === 'undefined') {
+      return false;
+    }
+
   if (_testMode) return TestModeAPI.ga(...args);
   if (!window.ga) return warn('ReactGA.initialize must be called first or GoogleAnalytics should be loaded manually');
   return window.ga(...args);
@@ -108,6 +112,10 @@ export function initialize(configsOrTrackingId, options) {
  * Returns the original GA object.
  */
 export function ga(...args) {
+    if (typeof window === 'undefined') {
+      return false;
+    }
+    
   if (args.length > 0) {
     internalGa(...args);
     if (_debug) {
