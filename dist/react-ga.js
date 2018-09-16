@@ -188,6 +188,10 @@ var _testMode = false;
 var _alwaysSendToDefaultTracker = true;
 
 var internalGa = function internalGa() {
+	if (typeof window === 'undefined') {
+      return false;
+    }
+	
   var _window;
 
   if (_testMode) return _testModeAPI2.default.ga.apply(_testModeAPI2.default, arguments);
@@ -275,6 +279,10 @@ function initialize(configsOrTrackingId, options) {
  * Returns the original GA object.
  */
 function ga() {
+	if (typeof window === 'undefined') {
+      return false;
+    }
+
   for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
     args[_key2] = arguments[_key2];
   }
@@ -975,6 +983,10 @@ var OutboundLink = function (_Component) {
   _inherits(OutboundLink, _Component);
 
   function OutboundLink() {
+	  if (typeof window === 'undefined') {
+        return false;
+      }
+
     var _ref;
 
     var _temp, _this, _ret;
